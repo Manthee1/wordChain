@@ -9,7 +9,6 @@ function addText(message, addToLeft = true) {
 }
 
 function startTimer() {
-
 	typeof looseInterval != "undefined" && clearInterval(looseInterval)
 
 	looseTime = timeAvailable
@@ -46,7 +45,6 @@ function getWord(startingCharacter = false) {
 	if (wordListHashMap[word[0]].length == 0) {
 		delete wordListHashMap[[word[0]]];
 	}
-
 	usedWords.push(word);
 	return word
 }
@@ -70,7 +68,7 @@ form.addEventListener('submit', (event) => {
 	addText(message, false)
 	form.reset()
 	if (!gameStared) { // If game is not started
-		const agreeMessages = ["yes", "y", "ye", "sure", "go", "proceed"]
+		const agreeMessages = ["yes", "y", "ye", "sure", "go", "proceed", 'ok']
 		if (agreeMessages.includes(message)) { // If the player agrees start the game
 			gameStared = true;
 			points = 0;
@@ -119,12 +117,10 @@ addText(`Welcome to word chain. In this game, you need come up with a word that 
 addText("For Example. 'word' -> 'down' -> 'now'");
 addText("Shall we begin?");
 
-document.querySelector('time').innerHTML = timeAvailable
+document.querySelector('time').innerHTML = timeAvailable;
 
 
-//Additional words
-wordList.push('droid', 'droids', 'yeet', 'yote', 'yeeted', 'nah');
-wordsArrayIntoHashMap = () => {
+function wordsArrayIntoHashMap() {
 	let wordListHashMap = {}
 	wordList.forEach(x => {
 		if (typeof wordListHashMap[x[0]] == 'undefined') {
@@ -134,5 +130,4 @@ wordsArrayIntoHashMap = () => {
 		wordListHashMap[x[0]].push(x)
 	});
 }
-wordsArrayIntoHashMap();
 
