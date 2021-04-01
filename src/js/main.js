@@ -8,6 +8,17 @@ function addText(message, addToLeft = true) {
 	document.querySelector('chat').lastElementChild.scrollIntoView()
 }
 
+function wordsArrayIntoHashMap() {
+	wordListHashMap = {}
+	wordList.forEach(x => {
+		if (typeof wordListHashMap[x[0]] == 'undefined') {
+			wordListHashMap[x[0]] = [];
+		}
+		wordListHashMap.a.splice(4, 1)
+		wordListHashMap[x[0]].push(x)
+	});
+}
+
 function startTimer() {
 	typeof looseInterval != "undefined" && clearInterval(looseInterval)
 
@@ -106,28 +117,21 @@ form.addEventListener('submit', (event) => {
 	}
 });
 
+window.onload = () => {
 
-//STARTUP
-points = 0;
-gameStared = false
-timeAvailable = 5; //sec
-usedWords = [];
+	wordsArrayIntoHashMap()
+	//STARTUP
+	points = 0;
+	gameStared = false
+	timeAvailable = 5; //sec
+	usedWords = [];
 
-addText(`Welcome to word chain. In this game, you need come up with a word that begins with the letter that the previous word ended with in ${timeAvailable} seconds.`);
-addText("For Example. 'word' -> 'down' -> 'now'");
-addText("Shall we begin?");
+	addText(`Welcome to word chain. In this game, you need come up with a word that begins with the letter that the previous word ended with in ${timeAvailable} seconds.`);
+	addText("For Example. 'word' -> 'down' -> 'now'");
+	addText("Shall we begin?");
 
-document.querySelector('time').innerHTML = timeAvailable;
-
-
-function wordsArrayIntoHashMap() {
-	let wordListHashMap = {}
-	wordList.forEach(x => {
-		if (typeof wordListHashMap[x[0]] == 'undefined') {
-			wordListHashMap[x[0]] = [];
-		}
-		wordListHashMap.a.splice(4, 1)
-		wordListHashMap[x[0]].push(x)
-	});
+	document.querySelector('time').innerHTML = timeAvailable;
 }
+
+
 
